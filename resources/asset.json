@@ -1,0 +1,13 @@
+{
+  "name": "Savings",
+  "assetType": "Savings",
+  "accountNo": "AT-00-9999234",
+  "website": "https://wellsfargo.com",
+  "websiteUser": "popeye2",
+  "websitePassword": "ssap123",
+  "holdingCompany": "Wells Fargo",
+  "holdingCompanyAddress": "45 Stagecoach Ln, Carson City, NV, 25289",
+  "holdingCompanyPhone": "800-429-2035",
+  "balance": "5000.00",
+  "userKey": 10
+}

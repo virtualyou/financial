@@ -22,6 +22,8 @@ const db = {};
 db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
-db.prescription = require("./prescription.model.js")(sequelize, Sequelize);
+db.asset = require("./asset.model.js")(sequelize, Sequelize);
+db.debt = require("./debt.model.js")(sequelize, Sequelize);
+
 
 module.exports = db;

@@ -36,7 +36,9 @@ module.exports = function(app) {
 
 // database
 const db = require("./app/models");
-const Prescription = db.prescription;
+const Asset = db.prescription;
+const Debt = db.prescription;
+
 /*
 db.sequelize.sync({force: true}).then(() => {
         console.log('Drop and Recreate Db');
@@ -45,103 +47,99 @@ db.sequelize.sync({force: true}).then(() => {
 */
 db.sequelize.sync();
 
-// swagger api documentation
-const swaggerUi = require("swagger-ui-express"),
-    swaggerDocument = require("./swagger.json");
-
 app.get("/", (req, res) => {
-  res.json({ message: "Welcome to the VirtualYou Medical Secure API Express application." });
+  res.json({ message: "Welcome to the VirtualYou Financial API." });
 });
 
 // routes
-require("./app/routes/prescription.routes")(app);
-
-// swagger path to api documentation
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+require("./app/routes/asset.routes")(app);
+require("./app/routes/debt.routes")(app);
 
 // set port, listen for requests
-const PORT = process.env.PORT || 3007;
+const PORT = process.env.PORT || 3004;
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}.`);
 });
 
-/*
-  {
-    "name": "Metformin",
-    "identNo": "6792303",
-    "size": "",
-    "form": "tablet",
-    "rxUnit": "500mg",
-    "quantity": "60",
-    "pharmacy": "Kroger",
-    "pharmacyPhone": "919-567-5499",
-    "written": "10/23/2023",
-    "writtenBy": "Dr. Smith",
-    "filled": "10/23/2023",
-    "expired": "10/23/2025",
-    "refillNote": "2 refills by 02/07/2024",
-    "manufacturedBy": "Mylan",
-    "note": "Take with food",
-    "userKey": 10
-  }
-*/
-
 function initial() {
-  Prescription.create({
-    name: "Metformin",
-    identNo: "6792303",
-    size: "",
-    form: "tablet",
-    rxUnit: "500mg",
-    quantity: "60",
-    pharmacy: "Kroger",
-    pharmacyPhone: "919-567-5499",
-    written: "10/23/2023",
-    writtenBy: "Dr. Smith",
-    filled: "10/23/2023",
-    expired: "10/23/2025",
-    refillNote: "2 refills by 02/07/2024",
-    manufacturedBy: "Mylan",
-    note: "Take with food",
+  Asset.create({
+    name: "Savings LFCU",
+    assetType: "Savings",
+    accountNo: "AT-00-9999234",
+    website: "https://lfcu.com",
+    websiteUser: "popeye2",
+    websitePassword: "ssap123",
+    holdingCompany: "Langley Federal Credit Union",
+    holdingCompanyAddress: "45 Stagecoach Ln, Carson City, NV, 25289",
+    holdingCompanyPhone: "800-429-2035",
+    balance: "15000.00",
     userKey: 10
   });
 
-  Prescription.create({
-    name: "Pravastatin",
-    identNo: "6733303",
-    size: "",
-    form: "tablet",
-    rxUnit: "20mg",
-    quantity: "60",
-    pharmacy: "Kroger",
-    pharmacyPhone: "919-567-5499",
-    written: "10/23/2023",
-    writtenBy: "Dr. Smith",
-    filled: "10/23/2023",
-    expired: "10/23/2025",
-    refillNote: "2 refills by 02/07/2024",
-    manufacturedBy: "Zocor",
-    note: "Take one tablet nightly",
+  Asset.create({
+    name: "Checking LFCU",
+    assetType: "Regular Checking",
+    accountNo: "AT-00-9999235",
+    website: "https://lfcu.com",
+    websiteUser: "popeye2",
+    websitePassword: "ssap123",
+    holdingCompany: "Langley Federal Credit Union",
+    holdingCompanyAddress: "45 Stagecoach Ln, Carson City, NV, 25289",
+    holdingCompanyPhone: "800-429-2035",
+    balance: "3879.13",
     userKey: 10
   });
 
-  Prescription.create({
-    name: "Amlodipine",
-    identNo: "6802323",
-    size: "",
-    form: "tablet",
-    rxUnit: "10mg",
-    quantity: "60",
-    pharmacy: "Kroger",
-    pharmacyPhone: "919-567-5499",
-    written: "10/23/2023",
-    writtenBy: "Dr. Smith",
-    filled: "10/23/2023",
-    expired: "10/23/2025",
-    refillNote: "2 refills by 02/07/2024",
-    manufacturedBy: "Eli Lily",
-    note: "Take as needed",
+  Debt.create({
+    name: "Water Utility",
+    debtType: "Utility",
+    accountNo: "123456",
+    website: "https://vawater.gov",
+    websiteUser: "guitarman77",
+    websitePassword: "pass123",
+    holdingCompany: "Virginia Water Utility",
+    holdingCompanyAddress: "23 North Pike, Petersburg, VA 12345",
+    holdingCompanyPhone: "800-123-4567",
+    balance: "0.00",
+    frequency: "Monthly",
+    due: "11/15/2023",
+    payment: "65.75",
     userKey: 10
   });
+
+  Debt.create({
+    name: "Dominion Power",
+    debtType: "Utility",
+    accountNo: "123783",
+    website: "https://vadominion.com",
+    websiteUser: "consumerHog62",
+    websitePassword: "pass123",
+    holdingCompany: "VA Dominion Power Inc.",
+    holdingCompanyAddress: "2344 Taylor Ln, Richmond, VA 23799",
+    holdingCompanyPhone: "800-877-1938",
+    balance: "0.00",
+    frequency: "Monthly",
+    due: "11/15/2023",
+    payment: "178.24",
+    userKey: 10
+  });
+
+  Debt.create({
+    name: "Rocket Mortgage",
+    debtType: "Mortgage",
+    accountNo: "823-100009",
+    website: "https://rocket.com",
+    websiteUser: "dlw12999",
+    websitePassword: "pass123",
+    holdingCompany: "Rocket Mortgage LLC",
+    holdingCompanyAddress: "399 West Toll Road, Sterling, VA 28444",
+    holdingCompanyPhone: "800-940-2309",
+    balance: "0.00",
+    frequency: "Monthly",
+    due: "12/01/2023",
+    payment: "1478.02",
+    userKey: 10
+  });
+
 }

@@ -1,0 +1,16 @@
+{
+  "name": "Water Utility",
+  "debtType": "Utility",
+  "accountNo": "123456",
+  "website": "https://vawater.gov",
+  "websiteUser": "guitarman77",
+  "websitePassword": "pass123",
+  "holdingCompany": "Virginia Water Utility",
+  "holdingCompanyAddress": "23 North Pike, Petersburg, VA 12345",
+  "holdingCompanyPhone": "800-123-4567",
+  "balance": "0.00",
+  "frequency": "Monthly",
+  "due": "11/15/2023",
+  "payment": "65.75",
+  "userKey": 10
+}
