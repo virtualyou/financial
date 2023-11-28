@@ -189,15 +189,15 @@ exports.createAssetForOwner = (req, res) => {
     // Create new Asset object
     const asset = {
         name: req.body.name || "",
-        assetType: req.body.identNo || "",
-        accountNo: req.body.size || "",
-        website: req.body.form || "",
-        websiteUser: req.body.rxUnit || "",
-        websitePassword: req.body.quantity || "",
-        holdingCompany: req.body.pharmacy || "",
-        holdingCompanyAddress: req.body.pharmacyPhone || "",
-        holdingCompanyPhone: req.body.written || "",
-        balance: req.body.writtenBy || "",
+        assetType: req.body.assetType || "",
+        accountNo: req.body.accountNo || "",
+        website: req.body.website || "",
+        websiteUser: req.body.websiteUser || "",
+        websitePassword: req.body.websitePassword || "",
+        holdingCompany: req.body.holdingCompany || "",
+        holdingCompanyAddress: req.body.holdingCompanyAddress || "",
+        holdingCompanyPhone: req.body.holdingCompanyPhone || "",
+        balance: req.body.balance || "",
         userKey: req.body.userKey || 0
     };
 /*
