@@ -55,7 +55,7 @@ module.exports = (sequelize, Sequelize) => {
             type: Sequelize.STRING
         },
         due: {
-            type: DataTypes.DATE
+            type: Sequelize.STRING
         },
         payment: {
             type: Sequelize.STRING
