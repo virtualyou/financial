@@ -199,7 +199,7 @@ exports.createDebtForOwner = (req, res) => {
         holdingCompanyPhone: req.body.holdingCompanyPhone || "",
         balance: req.body.balance || "",
         frequency: req.body.frequency || "",
-        due: new Date(req.body.due || null),
+        due: req.body.due || "",
         payment: req.body.payment || "",
         userKey: req.body.userKey || 0
     };
