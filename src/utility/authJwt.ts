@@ -16,8 +16,8 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
+ * authJwt.ts
  */
-//import * as dotenv from 'dotenv';
 
 import jwt from 'jsonwebtoken';
 import cookieConfig from '../config/auth.config';

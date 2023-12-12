@@ -15,11 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
+ * debt.model.ts
  */
 
-const DataTypes = require("sequelize");
-
-module.exports = (sequelize, Sequelize) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const debt = (sequelize: any, Sequelize: any) => {
     return sequelize.define("debts", {
         name: {
             type: Sequelize.STRING
@@ -65,21 +65,4 @@ module.exports = (sequelize, Sequelize) => {
         }
     });
 };
-
-/*
-  Debt.create({
-    name: "Water Utility",
-    debtType: "Utility",
-    accountNo: "123456",
-    website: "https://vawater.gov",
-    websiteUser: "guitarman77",
-    websitePassword: "pass123",
-    holdingCompany: "Virginia Water Utility",
-    holdingCompanyAddress: "23 North Pike, Petersburg, VA 12345",
-    holdingCompanyPhone: "800-123-4567",
-    balance: "0.00",
-    frequency: "Monthly",
-    due: "11/15/2023",
-    payment: "65.75",
-    userKey: 10
-*/
+export default debt;

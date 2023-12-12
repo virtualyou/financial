@@ -22,7 +22,8 @@ import express, {type Express} from "express";
 import cors from "cors";
 import * as dotenv from "dotenv";
 import db from "./models/index";
-import docRouter from "./routes/doc.routes";
+import assetRouter from "./routes/asset.routes";
+import debtRouter from "./routes/debt.routes";
 import cookieSession from "cookie-session";
 import * as process from "process";
 
@@ -56,11 +57,12 @@ app.use(function (_req, res, next) {
 });
 
 app.get("/", (_req, res) => {
-    res.send("Welcome to the VirtuaYou UserAuth API.");
+    res.send("Welcome to the VirtualYou UserAuth API.");
 });
 
-// database
-const Doc = db.doc;
+// database objects
+const Asset = db.aseet;
+const Debt = db.debt;
 
 if (init) {
     db.sequelize.sync({force: true}).then(() => {
@@ -72,23 +74,89 @@ if (init) {
 }
 
 // routes
-app.use(docRouter);
+app.use(assetRouter);
+app.use(debtRouter);
 
-// create reference role objects
+
+// create reference objects
 function initial() {
-    Doc.create({
-        id: 1,
-        name: "Health Care Directive",
-        type: "Google Drive Doc",
-        link: "https://drive.google.com/file/d/1jdCdPD23QS2_L9WJqUKGl9A551PfxmSS/view?usp=drive_link",
+// new objects
+    Asset.create({
+        name: "Savings LFCU",
+        assetType: "Savings",
+        accountNo: "AT-00-9999234",
+        website: "https://lfcu.com",
+        websiteUser: "popeye2",
+        websitePassword: "ssap123",
+        holdingCompany: "Langley Federal Credit Union",
+        holdingCompanyAddress: "45 Stagecoach Ln, Carson City, NV, 25289",
+        holdingCompanyPhone: "800-429-2035",
+        balance: "15000.00",
         userKey: 1
     });
 
-    Doc.create({
-        id: 2,
-        name: "Last Will and Testament",
-        type: "Google Drive Doc",
-        link: "https://drive.google.com/file/d/1RlBpKPUWtAagUz5RjaAFmFLu6PW9F-8o/view?usp=drive_link",
+    Asset.create({
+        name: "Checking LFCU",
+        assetType: "Regular Checking",
+        accountNo: "AT-00-9999235",
+        website: "https://lfcu.com",
+        websiteUser: "popeye2",
+        websitePassword: "ssap123",
+        holdingCompany: "Langley Federal Credit Union",
+        holdingCompanyAddress: "45 Stagecoach Ln, Carson City, NV, 25289",
+        holdingCompanyPhone: "800-429-2035",
+        balance: "3879.13",
+        userKey: 1
+    });
+
+    Debt.create({
+        name: "Water Utility",
+        debtType: "Utility",
+        accountNo: "123456",
+        website: "https://vawater.gov",
+        websiteUser: "guitarman77",
+        websitePassword: "pass123",
+        holdingCompany: "Virginia Water Utility",
+        holdingCompanyAddress: "23 North Pike, Petersburg, VA 12345",
+        holdingCompanyPhone: "800-123-4567",
+        balance: "0.00",
+        frequency: "Monthly",
+        due: "11/15/2023",
+        payment: "65.75",
+        userKey: 1
+    });
+
+    Debt.create({
+        name: "Dominion Power",
+        debtType: "Utility",
+        accountNo: "123783",
+        website: "https://vadominion.com",
+        websiteUser: "consumerHog62",
+        websitePassword: "pass123",
+        holdingCompany: "VA Dominion Power Inc.",
+        holdingCompanyAddress: "2344 Taylor Ln, Richmond, VA 23799",
+        holdingCompanyPhone: "800-877-1938",
+        balance: "0.00",
+        frequency: "Monthly",
+        due: "11/15/2023",
+        payment: "178.24",
+        userKey: 1
+    });
+
+    Debt.create({
+        name: "Rocket Mortgage",
+        debtType: "Mortgage",
+        accountNo: "823-100009",
+        website: "https://rocket.com",
+        websiteUser: "dlw12999",
+        websitePassword: "pass123",
+        holdingCompany: "Rocket Mortgage LLC",
+        holdingCompanyAddress: "399 West Toll Road, Sterling, VA 28444",
+        holdingCompanyPhone: "800-940-2309",
+        balance: "0.00",
+        frequency: "Monthly",
+        due: "12/01/2023",
+        payment: "1478.02",
         userKey: 1
     });
 }

@@ -15,9 +15,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
+ * asset.model.ts
  */
 
-module.exports = (sequelize, Sequelize) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const asset = (sequelize: any, Sequelize: any) => {
     return sequelize.define("assets", {
         name: {
             type: Sequelize.STRING
@@ -54,19 +56,4 @@ module.exports = (sequelize, Sequelize) => {
         }
     });
 };
-
-/*
-  Asset.create({
-    name: "Checking LFCU",
-    assetType: "Regular Checking",
-    accountNo: "AT-00-9999235",
-    website: "https://lfcu.com",
-    websiteUser: "popeye2",
-    websitePassword: "ssap123",
-    holdingCompany: "Langley Federal Credit Union",
-    holdingCompanyAddress: "45 Stagecoach Ln, Carson City, NV, 25289",
-    holdingCompanyPhone: "800-429-2035",
-    balance: "3879.13",
-    userKey: 10
-  });
-*/
+export default asset;

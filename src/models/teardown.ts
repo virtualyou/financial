@@ -1,4 +1,4 @@
-import db from './index';
+import db from './index'
 
 module.exports = async () => {
   // close Sequelize connections here
