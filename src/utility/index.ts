@@ -1,5 +1,6 @@
 
 /*
+ *
  * VirtualYou Project
  * Copyright 2023 David L Whitehurst
  *
@@ -17,8 +18,8 @@
  *
  */
 
-const authJwt = require("./authJwt");
+import authJwt from "./authJwt";
 
 module.exports = {
-  authJwt
+  authJwt,
 };
