@@ -1,5 +1,6 @@
 
 /*
+ *
  * VirtualYou Project
  * Copyright 2023 David L Whitehurst
  *
@@ -15,20 +16,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  *
+ * auth.config.ts
  */
 
-require('dotenv').config();
-
-module.exports = {
-  HOST: process.env.DB_HOST,
-  USER: process.env.DB_USER,
-  PASSWORD: process.env.DB_PASSWORD,
-  DB: process.env.DB_SCHEMA,
-  dialect: "mysql",
-  pool: {
-    max: 5,
-    min: 0,
-    acquire: 30000,
-    idle: 10000
-  }
+const cookieConfig = {
+  secret: "virtual-you-secret"
 };
+
+export default cookieConfig;

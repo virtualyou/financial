@@ -1,5 +1,5 @@
-
 /*
+ *
  * VirtualYou Project
  * Copyright 2023 David L Whitehurst
  *
@@ -18,5 +18,6 @@
  */
 
 module.exports = {
-  secret: "virtual-you-secret"
+  // jest configuration options
+  globalTeardown: "./models/teardown.ts",
 };
