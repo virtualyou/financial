@@ -43,6 +43,7 @@ app.use(
     cookieSession({
         name: "virtualyou-session",
         keys: ["COOKIE_SECRET"],
+        //domain: '.virtualyou.info',
         httpOnly: true,
         sameSite: 'strict'
     })
@@ -57,11 +58,11 @@ app.use(function (_req, res, next) {
 });
 
 app.get("/", (_req, res) => {
-    res.send("Welcome to the VirtualYou UserAuth API.");
+    res.send("Welcome to the VirtualYou Financial API.");
 });
 
-// database objects
-const Asset = db.aseet;
+// database
+const Asset = db.asset;
 const Debt = db.debt;
 
 if (init) {
