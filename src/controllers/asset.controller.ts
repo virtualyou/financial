@@ -270,14 +270,18 @@ const deleteAllAssetsForOwner = (req: Request, res: Response) => {
 
 const getWhereKey = (req: Request) => {
     let key: number;
-    if (req.ownerId === 0) {
-        console.log("key " + req.userId);
-        key = req.userId;
+    const user: number  =  parseInt(req.userId);
+    const owner: number = parseInt(req.ownerId);
+
+    if (owner === 0) {
+        key = user;
+        console.log("key " + user);
+        return key;
     } else {
-        key = req.ownerId;
-        console.log("key " + req.ownerId);
+        key = owner;
+        console.log("bastard key " + owner);
+        return key;
     }
-    return key;
 }
 
 const assetController = {
