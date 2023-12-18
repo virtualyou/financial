@@ -18,6 +18,8 @@
  * debt.model.ts
  */
 
+import { DataTypes } from 'sequelize';
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const debt = (sequelize: any, Sequelize: any) => {
     return sequelize.define("debts", {
@@ -55,7 +57,7 @@ const debt = (sequelize: any, Sequelize: any) => {
             type: Sequelize.STRING
         },
         due: {
-            type: Sequelize.STRING
+            type: DataTypes.DATE
         },
         payment: {
             type: Sequelize.STRING
