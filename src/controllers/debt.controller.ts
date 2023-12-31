@@ -124,7 +124,7 @@ const createDebtForOwner = (req: Request, res: Response) => {
         holdingCompanyPhone: req.body.holdingCompanyPhone || "",
         balance: req.body.balance || "",
         frequency: req.body.frequency || "",
-        due: req.body.due || "",
+        due: req.body.due, // || "",
         payment: req.body.payment || "",
         userKey: getWhereKey(req)
     };

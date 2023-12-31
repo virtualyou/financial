@@ -57,7 +57,8 @@ const debt = (sequelize: any, Sequelize: any) => {
             type: Sequelize.STRING
         },
         due: {
-            type: DataTypes.DATE
+            type: DataTypes.DATE,
+            allowNull: true
         },
         payment: {
             type: Sequelize.STRING
