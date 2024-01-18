@@ -22,6 +22,7 @@ import config from "../config/config";
 import { Sequelize } from "sequelize-typescript";
 import Asset from "./asset.model";
 import Debt from "./debt.model";
+import Budget from "./budget.model";
 
 const sequelize = new Sequelize(
     config.database.db,
@@ -48,5 +49,6 @@ db["Sequelize"] = Sequelize;
 
 db.asset = Asset(sequelize, Sequelize);
 db.debt = Debt(sequelize, Sequelize);
+db.budget = Budget(sequelize, Sequelize);
 
 export default db;
