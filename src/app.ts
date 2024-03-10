@@ -38,12 +38,11 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
-
 app.use(
     cookieSession({
         name: "virtualyou-session",
         keys: ["COOKIE_SECRET"],
-        domain: '.virtualyou.info',
+        domain: '.virtualyouplan.com',
         httpOnly: true,
         sameSite: 'strict'
     })
